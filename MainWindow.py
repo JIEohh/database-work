@@ -16,6 +16,7 @@ class MainWindow(QWidget, MFieldMixin):
         self._init_ui()
 
 
+
     def _init_ui(self):
         self.resize(250, 350)
         self.button_login = MToolButton().svg('user_line.svg').text_beside_icon()
@@ -47,6 +48,8 @@ class MainWindow(QWidget, MFieldMixin):
         new_widget_3_3 = QTreeWidgetItem(new_widget_3)
         new_widget_3_3.setText(0, u'运输与物流')
 
+        new_widget_3_3_1 = QTreeWidgetItem(new_widget_3_3)
+        new_widget_3_3_1.setText(0, u'运输与物流第一章')
 
         tree_layout = QVBoxLayout()
         tree_layout.addWidget(self.tree)
@@ -59,7 +62,20 @@ class MainWindow(QWidget, MFieldMixin):
 
 
     def testt(self,item):
-        print item.text(0)
+        self.level = 0;
+        def getLevel(item):
+            if(item.parent()):
+                par = item.parent()
+                self.level=self.level+1
+               # print self.level,par.text(0)
+                getLevel(par)
+        getLevel(item)
+        if(self.level==2):
+            print True
+            return True
+        else:
+            print False
+            return False
 
     def onclick(self):
         self.login = Login()
