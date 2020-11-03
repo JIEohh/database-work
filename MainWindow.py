@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-# NOTE 定位 dayu_widgets 的目录
-MODULE = r"C:\Magician\python\2.7"
-sys.path.insert(0, MODULE) if MODULE not in sys.path else None
-
 from dayu_widgets.qt import QWidget,QVBoxLayout,QHBoxLayout,QTreeWidget,QRect,QTreeWidgetItem,SIGNAL,SLOT
 from dayu_widgets import dayu_theme
 from dayu_widgets.tool_button import MToolButton
@@ -64,7 +59,7 @@ class MainWindow(QWidget, MFieldMixin):
 
 
     def testt(self,item):
-        print ('aaaa',item)
+        print item.text(0)
 
     def onclick(self):
         self.login = Login()
