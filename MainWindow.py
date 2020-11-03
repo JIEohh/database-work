@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
+# NOTE 定位 dayu_widgets 的目录
+MODULE = r"C:\Magician\python\2.7"
+sys.path.insert(0, MODULE) if MODULE not in sys.path else None
+
 from dayu_widgets.qt import QWidget,QVBoxLayout,QHBoxLayout,QTreeWidget,QRect,QTreeWidgetItem,SIGNAL,SLOT
 from dayu_widgets import dayu_theme
 from dayu_widgets.tool_button import MToolButton
@@ -29,6 +34,7 @@ class MainWindow(QWidget, MFieldMixin):
         self.tree.setColumnCount(1)
         self.tree.setHeaderHidden(1)
         self.tree.setGeometry(QRect(1,1,250,500))
+        self.tree.itemClicked.connect(self.testt)
 
         new_widget_1 = QTreeWidgetItem(self.tree)
         new_widget_1.setText(0,u'技能培训')
@@ -57,8 +63,8 @@ class MainWindow(QWidget, MFieldMixin):
         self.setLayout(main_lay)
 
 
-    def testt(self):
-        print 'aaaa'
+    def testt(self,item):
+        print ('aaaa',item)
 
     def onclick(self):
         self.login = Login()
